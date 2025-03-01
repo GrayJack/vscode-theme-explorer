@@ -177,6 +177,16 @@
           "default": true,
           "description": "Whether to include fonts when executing \"Random All\"."
         },
+        "theme-explorer.syncTerminalFont": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to also modify the terminal fonts when changing configuration."
+        },
+        "theme-explorer.syncDebugTermFont": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to also modify the debug console fonts when changing configuration."
+        },
         "theme-explorer.themeStyle": {
           "type": "string",
           "enum": [
@@ -189,6 +199,7 @@
         },
         "theme-explorer.fontLigatureAssociation": {
           "type": "object",
+          "default": {},
           "description": "Association of a font and a font ligature configuration."
         },
         "theme-explorer.randomType": {

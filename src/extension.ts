@@ -171,17 +171,11 @@ class FontTree extends Tree<Font> implements vscode.TreeDragAndDropController<Fo
         } else {
             fonts.unshift(font.name);
         }
-        updateConfig(
-            "editor.fontFamily",
-            Font.toString(fonts),
-            config,
-            showError,
-        );
 
-        const fontLigatures: object = config.get(
-            "theme-explorer.fontLigatureAssociation",
-            {},
-        );
+        const syncTerminal = config.get("theme-explorer.syncTerminalFont", false);
+        const syncDebugTerm = config.get("theme-explorer.syncDebugTermFont", false);
+
+        const fontLigatures: object = config.get("theme-explorer.fontLigatureAssociation", {});
         let liga = "";
         Object.entries(fontLigatures).forEach(([key, value]) => {
             if (key === fonts[0]) {
@@ -189,12 +183,14 @@ class FontTree extends Tree<Font> implements vscode.TreeDragAndDropController<Fo
             }
         });
 
-                updateConfig(
-                    "editor.fontLigatures",
-            liga,
-                    config,
-                    showError,
-                );
+        updateConfig("editor.fontFamily", Font.toString(fonts), config, showError);
+        updateConfig("editor.fontLigatures", liga, config, showError);
+        if (syncTerminal) {
+            updateConfig("debug.console.fontFamily", Font.toString(fonts), config, showError);
+        }
+        if (syncDebugTerm) {
+            updateConfig("terminal.integrated.fontFamily", Font.toString(fonts), config, showError);
+        }
     }
 }
 
