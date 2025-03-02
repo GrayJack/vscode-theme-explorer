@@ -1,22 +1,20 @@
 # Theme Explorer
 
-![](quick-config-preview.gif)
+This is a fork of [Theme Explorer](https://marketplace.visualstudio.com/items?itemName=moonyoulove.theme-explorer) mostly to make it easier to access my modifications in my other profiles and other VSCode installations. I have intentions to upstream all features.
 
-This extension offers a quick and easy way to manage your editor's themes,
-fonts, and icons.
+![Preview: Quick Config](https://media.githubusercontent.com/media/GrayJack/vscode-theme-explorer/refs/heads/grayjack/quick-config-preview.gif)
 
-You can effortlessly rearrange fonts by dragging them, as well as add or remove
-items with ease.
+This extension offers a quick and easy way to manage your editor's themes, fonts, and icons.
 
-Switching themes is just a click away, eliminating the need to scroll through
-themes one by one using keyboard arrows or repeatedly reopening the theme
-selection menu.
+You can effortlessly rearrange fonts by dragging them, as well as add or remove items with ease.
 
-![](random-feature-preview.gif)
+Switching themes is just a click away, eliminating the need to scroll through themes one by one
+using keyboard arrows or repeatedly reopening the theme selection menu.
 
-Additionally, you can schedule random changes to themes, fonts, and icons at set
-intervals. Choose to have these changes occur every few hours or each time the
-editor starts.
+![Preview: Random Feature](https://media.githubusercontent.com/media/GrayJack/vscode-theme-explorer/refs/heads/grayjack/random-feature-preview.gif)
 
-By clicking the ignore button in the tree view, you can exclude specific themes,
-fonts, or icons from the random selection, ensuring they won't be chosen.
+Additionally, you can schedule random changes to themes, fonts, and icons at set intervals. Choose
+to have these changes occur every few hours or each time the editor starts/restarts.
+
+By clicking the ignore button in the tree view, you can exclude specific themes, fonts, or icons
+from the random selection, ensuring they won't be chosen.

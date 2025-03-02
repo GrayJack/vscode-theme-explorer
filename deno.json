@@ -1,8 +1,4 @@
 {
-  "tasks": {
-  },
-  "imports": {
-  },
   "fmt": {
     "lineWidth": 100,
     "indentWidth": 4
