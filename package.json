@@ -218,15 +218,20 @@
           "default": true,
           "description": "Whether to include fonts when executing \"Random All\"."
         },
-        "theme-explorer.syncTerminalFont": {
+        "theme-explorer.syncTermFontWithEditor": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to also modify the terminal fonts when changing configuration."
+          "description": "Whether to also modify the terminal fonts when changing the editor configuration."
         },
-        "theme-explorer.syncDebugTermFont": {
+        "theme-explorer.syncDebugFontWithEditor": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to also modify the debug console fonts when changing configuration."
+          "description": "Whether to also modify the debug console fonts when changing the editor configuration."
+        },
+        "theme-explorer.syncDebugFontwithTerm": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to also modify the debug console fonts when changing the terminal configuration."
         },
         "theme-explorer.themeStyle": {
           "type": "string",

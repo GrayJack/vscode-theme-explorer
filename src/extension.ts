@@ -202,8 +202,8 @@ class EditorFontTree extends Tree<Font> implements vscode.TreeDragAndDropControl
         config: vscode.WorkspaceConfiguration,
         showError: boolean = false,
     ) {
-        const syncTerminal = config.get("theme-explorer.syncTerminalFont", false);
-        const syncDebugTerm = config.get("theme-explorer.syncDebugTermFont", false);
+        const syncTerminal = config.get("theme-explorer.syncTermFontWithEditor", false);
+        const syncDebugTerm = config.get("theme-explorer.syncDebugFontWithEditor", false);
 
         const fontLigatures: object = config.get("theme-explorer.fontLigatureAssociation", {});
         let liga = "";
@@ -308,8 +308,8 @@ class TermFontTree extends Tree<Font> implements vscode.TreeDragAndDropControlle
         config: vscode.WorkspaceConfiguration,
         showError: boolean = false,
     ) {
-        const syncTerminal = config.get("theme-explorer.syncTerminalFont", false);
-        const syncDebugTerm = config.get("theme-explorer.syncDebugTermFont", false);
+        const syncTerminal = config.get("theme-explorer.syncTermFontWithEditor", false);
+        const syncDebugTerm = config.get("theme-explorer.syncDebugFontWithEditor", false);
         const fontLigatures: object = config.get("theme-explorer.termFontLigatureAssociation", {});
         let liga = "";
         Object.entries(fontLigatures).forEach(([key, value]) => {
