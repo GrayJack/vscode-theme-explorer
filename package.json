@@ -1,6 +1,6 @@
 {
-  "name": "theme-explorer",
-  "displayName": "Theme Explorer",
+  "name": "theme-explorer-grayjack",
+  "displayName": "Theme&Font Explorer",
   "description": "(Fork) Quick switching of themes, fonts, and icons, and can change randomly from time to time.",
   "icon": "resources/theme-explorer.png",
   "publisher": "GrayJack",
