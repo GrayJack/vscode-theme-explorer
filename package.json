@@ -283,20 +283,20 @@
     "views": {
       "theme-explorer": [
         {
-          "id": "theme-explorer.font",
-          "name": "Editor Font"
-        },
-        {
-          "id": "theme-explorer.termFont",
-          "name": "Terminal Font"
-        },
-        {
           "id": "theme-explorer.theme",
           "name": "Color Theme"
         },
         {
           "id": "theme-explorer.icon",
           "name": "Icon Theme"
+        },
+        {
+          "id": "theme-explorer.font",
+          "name": "Editor Font"
+        },
+        {
+          "id": "theme-explorer.termFont",
+          "name": "Terminal Font"
         }
       ]
     },
