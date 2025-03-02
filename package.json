@@ -287,11 +287,11 @@
         },
         {
           "id": "theme-explorer.theme",
-          "name": "Theme"
+          "name": "Color Theme"
         },
         {
           "id": "theme-explorer.icon",
-          "name": "Icon"
+          "name": "Icon Theme"
         }
       ]
     },
