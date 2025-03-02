@@ -540,32 +540,57 @@ class TreeManager {
 
     changeAll(context: vscode.ExtensionContext, resetTimer: boolean = false) {
         const { fontTree, themeTree, iconTree, termFontTree } = this;
+
         if (resetTimer) {
             context.globalState.update("startTime", Date.now());
         }
         const config = vscode.workspace.getConfiguration();
-        if (config.get("theme-explorer.changeFont", true)) {
+        const changeFont = config.get("theme-explorer.changeFont", true);
+        const changeTermFont = config.get("theme-explorer.changeTermFont", true);
+        const changeTheme = config.get("theme-explorer.changeTheme", true);
+        const changeIcon = config.get("theme-explorer.changeIcon", true);
+
+        let whatChanges = [];
+
+        if (changeFont) {
+            whatChanges.push("editor font");
+        }
+        if (changeTermFont) {
+            whatChanges.push("terminal font");
+        }
+        if (changeTheme) {
+            whatChanges.push("color theme");
+        }
+        if (changeIcon) {
+            whatChanges.push("icon theme");
+        }
+
+        vscode.window.showInformationMessage(
+            `Changing all (${whatChanges.join(", ")}) to a random option`,
+        );
+
+        if (changeFont) {
             const font = fontTree.getRandomItem();
             if (font) {
                 fontTree.setConfig(font, config);
                 fontTree.needsScroll();
             }
         }
-        if (config.get("theme-explorer.changeTermFont", true)) {
+        if (changeTermFont) {
             const font = termFontTree.getRandomItem();
             if (font) {
                 termFontTree.setConfig(font, config);
                 termFontTree.needsScroll();
             }
         }
-        if (config.get("theme-explorer.changeTheme", true)) {
+        if (changeTheme) {
             const theme = themeTree.getRandomItem();
             if (theme) {
                 themeTree.setConfig(theme, config);
                 themeTree.needsScroll();
             }
         }
-        if (config.get("theme-explorer.changeIcon", true)) {
+        if (changeIcon) {
             const icon = iconTree.getRandomItem();
             if (icon) {
                 iconTree.setConfig(icon, config);
@@ -949,6 +974,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(
         vscode.commands.registerCommand("theme-explorer.randomFont", () => {
+            vscode.window.showInformationMessage("Changing the editor font to a random option");
             const font = fontTree.getRandomItem();
             if (font) {
                 fontTree.setConfig(font, null, true);
@@ -958,6 +984,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
     context.subscriptions.push(
         vscode.commands.registerCommand("theme-explorer.randomTermFont", () => {
+            vscode.window.showInformationMessage("Changing the terminal font to a random option");
             const font = termFontTree.getRandomItem();
             if (font) {
                 termFontTree.setConfig(font, null, true);
@@ -967,6 +994,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
     context.subscriptions.push(
         vscode.commands.registerCommand("theme-explorer.randomIcon", () => {
+            vscode.window.showInformationMessage("Changing the file icon theme to a random option");
             const icon = iconTree.getRandomItem();
             if (icon) {
                 iconTree.setConfig(icon, null, true);
@@ -976,6 +1004,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
     context.subscriptions.push(
         vscode.commands.registerCommand("theme-explorer.randomTheme", () => {
+            vscode.window.showInformationMessage("Changing the color theme to a random option");
             const theme = themeTree.getRandomItem();
             if (theme) {
                 themeTree.setConfig(theme, null, true);
