@@ -23,11 +23,16 @@
     "commands": [
       {
         "command": "theme-explorer.randomAll",
-        "title": "Random Change Theme, Font and Icon",
+        "title": "Random Change All Enabled",
         "category": "Theme Explorer"
       },
       {
         "command": "theme-explorer.deleteFont",
+        "title": "Delete",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "theme-explorer.deleteTermFont",
         "title": "Delete",
         "icon": "$(trash)"
       },
@@ -43,6 +48,11 @@
       },
       {
         "command": "theme-explorer.addFont",
+        "title": "Add",
+        "icon": "$(add)"
+      },
+      {
+        "command": "theme-explorer.addTermFont",
         "title": "Add",
         "icon": "$(add)"
       },
@@ -86,6 +96,11 @@
         "icon": "$(eye-closed)"
       },
       {
+        "command": "theme-explorer.ignoreTermFont",
+        "title": "Ignore",
+        "icon": "$(eye-closed)"
+      },
+      {
         "command": "theme-explorer.ignoreTheme",
         "title": "Ignore",
         "icon": "$(eye-closed)"
@@ -101,6 +116,11 @@
         "icon": "$(eye)"
       },
       {
+        "command": "theme-explorer.unignoreTermFont",
+        "title": "Cancel Ignore",
+        "icon": "$(eye)"
+      },
+      {
         "command": "theme-explorer.unignoreTheme",
         "title": "Cancel Ignore",
         "icon": "$(eye)"
@@ -112,6 +132,14 @@
       },
       {
         "command": "theme-explorer.randomFont",
+        "title": "Random",
+        "icon": {
+          "light": "resources/random-light.svg",
+          "dark": "resources/random-dark.svg"
+        }
+      },
+      {
+        "command": "theme-explorer.randomTermFont",
         "title": "Random",
         "icon": {
           "light": "resources/random-light.svg",
@@ -146,6 +174,14 @@
           "default": [],
           "description": "Fonts to exclude during random selection."
         },
+        "theme-explorer.ignoreTermFonts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Terminal fonts to exclude during random selection."
+        },
         "theme-explorer.ignoreThemes": {
           "type": "array",
           "items": {
@@ -166,6 +202,11 @@
           "type": "boolean",
           "default": true,
           "description": "Whether to include fonts when executing \"Random All\"."
+        },
+        "theme-explorer.changeTermFont": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to include terminal fonts when executing \"Random All\"."
         },
         "theme-explorer.changeTheme": {
           "type": "boolean",
@@ -202,6 +243,11 @@
           "default": {},
           "description": "Association of a font and a font ligature configuration."
         },
+        "theme-explorer.termFontLigatureAssociation": {
+          "type": "object",
+          "default": {},
+          "description": "Association of a font and a font ligature configuration for the integrated terminal."
+        },
         "theme-explorer.randomType": {
           "type": "string",
           "enum": [
@@ -233,7 +279,11 @@
       "theme-explorer": [
         {
           "id": "theme-explorer.font",
-          "name": "Font"
+          "name": "Editor Font"
+        },
+        {
+          "id": "theme-explorer.termFont",
+          "name": "Terminal Font"
         },
         {
           "id": "theme-explorer.theme",
@@ -253,6 +303,11 @@
           "group": "inline@2"
         },
         {
+          "command": "theme-explorer.deleteTermFont",
+          "when": "view == theme-explorer.termFont",
+          "group": "inline@2"
+        },
+        {
           "command": "theme-explorer.deleteTheme",
           "when": "view == theme-explorer.theme",
           "group": "inline@2"
@@ -265,6 +320,11 @@
         {
           "command": "theme-explorer.ignoreFont",
           "when": "view == theme-explorer.font && viewItem != ignored",
+          "group": "inline@1"
+        },
+        {
+          "command": "theme-explorer.ignoreTermFont",
+          "when": "view == theme-explorer.termFont && viewItem != ignored",
           "group": "inline@1"
         },
         {
@@ -283,6 +343,11 @@
           "group": "inline@1"
         },
         {
+          "command": "theme-explorer.unignoreTermFont",
+          "when": "view == theme-explorer.termFont && viewItem == ignored",
+          "group": "inline@1"
+        },
+        {
           "command": "theme-explorer.unignoreTheme",
           "when": "view == theme-explorer.theme && viewItem == ignored",
           "group": "inline@1"
@@ -297,6 +362,11 @@
         {
           "command": "theme-explorer.addFont",
           "when": "view == theme-explorer.font",
+          "group": "navigation@2"
+        },
+        {
+          "command": "theme-explorer.addTermFont",
+          "when": "view == theme-explorer.termFont",
           "group": "navigation@2"
         },
         {
@@ -330,6 +400,11 @@
           "group": "navigation@1"
         },
         {
+          "command": "theme-explorer.randomTermFont",
+          "when": "view == theme-explorer.termFont",
+          "group": "navigation@1"
+        },
+        {
           "command": "theme-explorer.randomTheme",
           "when": "view == theme-explorer.theme",
           "group": "navigation@2"
@@ -346,6 +421,10 @@
           "when": "false"
         },
         {
+          "command": "theme-explorer.deleteTermFont",
+          "when": "false"
+        },
+        {
           "command": "theme-explorer.deleteTheme",
           "when": "false"
         },
@@ -355,6 +434,10 @@
         },
         {
           "command": "theme-explorer.addFont",
+          "when": "false"
+        },
+        {
+          "command": "theme-explorer.addTermFont",
           "when": "false"
         },
         {
@@ -382,6 +465,10 @@
           "when": "false"
         },
         {
+          "command": "theme-explorer.ignoreTermFont",
+          "when": "false"
+        },
+        {
           "command": "theme-explorer.ignoreTheme",
           "when": "false"
         },
@@ -394,6 +481,10 @@
           "when": "false"
         },
         {
+          "command": "theme-explorer.unignoreTermFont",
+          "when": "false"
+        },
+        {
           "command": "theme-explorer.unignoreTheme",
           "when": "false"
         },
@@ -403,6 +494,10 @@
         },
         {
           "command": "theme-explorer.randomFont",
+          "when": "false"
+        },
+        {
+          "command": "theme-explorer.randomTermFont",
           "when": "false"
         },
         {
