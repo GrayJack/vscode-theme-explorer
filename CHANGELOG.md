@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.1.1
+- Revert back `activationEvents`
+
 ## 1.1.0
 
 - Feat: Add configuration to also modify the editor font ligatures.
