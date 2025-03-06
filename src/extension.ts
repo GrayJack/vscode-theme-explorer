@@ -551,7 +551,7 @@ class TreeManager {
         const changeTheme = config.get("theme-explorer.changeTheme", true);
         const changeIcon = config.get("theme-explorer.changeIcon", true);
 
-        let whatChanges = [];
+        const whatChanges = [];
 
         if (changeFont) {
             whatChanges.push("editor font");
